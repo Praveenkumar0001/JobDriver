@@ -1,0 +1,220 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f0f2f5, #dfe3e6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before, body::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+    background: radial-gradient(circle, #8a03bb, #4e008a);
+    animation: floatLarge 10s ease-in-out infinite;
+    z-index: -1;
+}
+
+body::before {
+    width: 300px;
+    height: 300px;
+    top: -100px;
+    left: -100px;
+}
+
+body::after {
+    width: 400px;
+    height: 400px;
+    bottom: -150px;
+    right: -150px;
+}
+
+@keyframes floatLarge {
+    0%, 100% {
+        transform: translateY(0) rotate(0);
+    }
+    50% {
+        transform: translateY(30px) rotate(30deg);
+    }
+}
+
+.container {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 450px;
+    animation: fadeIn 1s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before, .container::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: float 6s ease-in-out infinite;
+}
+
+.container::before {
+    top: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background-color: #8a03bb;
+}
+
+.container::after {
+    bottom: -60px;
+    left: -60px;
+    width: 100px;
+    height: 100px;
+    background-color: #8800ff;
+}
+
+.extra-float1, .extra-float2 {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: float 8s ease-in-out infinite;
+}
+
+.extra-float1 {
+    top: -40px;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    background-color: #4e008a;
+    transform: translateX(-50%);
+}
+
+.extra-float2 {
+    bottom: -70px;
+    right: 50%;
+    width: 120px;
+    height: 120px;
+    background-color: #33006a;
+    transform: translateX(50%);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 25px;
+    color: #333;
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+button {
+    padding: 14px 28px;
+    font-size: 16px;
+    background: linear-gradient(135deg, #9900ff, #2a00b3);
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%) rotate(45deg);
+    transition: width 0.3s ease, height 0.3s ease;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+button:hover::before {
+    width: 0;
+    height: 0;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #7100b3, #3c008a);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    background: linear-gradient(135deg, #510094, #41006a);
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+button span {
+    position: relative;
+    z-index: 1;
+}
+
+#status {
+    font-size: 16px;
+    margin-top: 20px;
+    color: #666;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        width: 90%;
+        padding: 30px;
+    }
+}
+
+/* Accessibility Improvements */
+button:focus {
+    outline: 3px solid #80bdff;
+    outline-offset: 2px;
+}
